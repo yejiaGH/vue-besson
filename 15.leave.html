@@ -44,6 +44,11 @@
 				content: '',
 				messages: []
 			},
+			mounted() {
+				this.$http.get('/leaves').then(function(res){
+					this.messages = res.body;
+				});
+			},
 			methods: {
 				leave() {
 					// this.messages.push(this)
