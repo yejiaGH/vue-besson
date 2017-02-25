@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过滤器</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		{{msg | capitalize}}
+		{{100 | currency '$'}}
+	</div>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<!-- 在2.0中所有的内置过滤器都没有了，推荐自己写过滤器 -->
+	<script src="vue-2.1.10.js"></script>
+	<script src="vue-resource.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				msg: 'hello'
+			},			
+			methods: {
+				
+			}
+		});
+	</script>
+</body>
+</html>
