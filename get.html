@@ -13,6 +13,7 @@
 		{{msg}}
 		<button @click="getUser">获取数据</button>
 		<button @click="postUser">发送数据</button>
+		<button @click="getData">获取百度数据</button>
 	</div>
 	<script src="vue-2.1.10.js"></script>
 	<script src="vue-resource.js"></script>
@@ -28,13 +29,22 @@
 					this.$http.get('/getUser').then(function (res) {
 						console.log(res.body);
 						this.msg = res.body;
-					})
+					});
 				},
 				postUser() {
 					this.$http.post('/postUser', {name: 'xiaoye'}).then(function (res) {
 						 console.log(res);
-					})
-
+					});
+				},
+				getData() {
+					this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+						params: {
+							wd: '陆金所',
+						},
+						jsonp: 'cb'
+					}).then(function (res) {
+						console.log(res);
+					});
 				}
 			}
 		});
