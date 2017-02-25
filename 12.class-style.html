@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动态绑定style</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		.back {
+			background: blue;
+		}
+		.color {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="app">
+	<!-- 根据bool类型增加样式 -->
+		<div :class="{back : flag, color : !flag}">陆金所</div>
+		<!-- 数组的方式 -->
+		<div :class="[back1, color1]">陆金所</div>
+	</div>
+	<script src="vue-2.1.10.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				back1: 'back',
+				color1: 'color',
+				flag: true
+			},
+			methods: {
+				
+			}
+		});
+	</script>
+</body>
+</html>
