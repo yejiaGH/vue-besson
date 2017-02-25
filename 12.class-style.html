@@ -19,6 +19,9 @@
 		<div :class="{back : flag, color : !flag}">陆金所</div>
 		<!-- 数组的方式 -->
 		<div :class="[back1, color1]">陆金所</div>
+
+		<div :style="{background:'pink', color: 'grey'}">陆金所</div>
+		<div :style="[a,b]">陆金所</div>
 	</div>
 	<script src="vue-2.1.10.js"></script>
 	<script>
@@ -27,7 +30,13 @@
 			data: {
 				back1: 'back',
 				color1: 'color',
-				flag: true
+				flag: true,
+				a: {
+					fontSize: '40px'
+				},
+				b: {
+					backgroundColor: 'yellow'
+				}
 			},
 			methods: {
 				
