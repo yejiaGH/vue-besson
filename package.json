@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/yejiaGH/vue-besson#readme",
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "mongoose": "^4.8.4"
+  },
+  "devDependencies": {
+    "express": "^4.14.1"
   }
 }
