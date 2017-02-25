@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+	数据绑定
+	</title>
+</head>
+<body>
+	<div id="app">
+		{{obj | json}}
+		<ul>
+			<!-- val代表的是obj中的值 1.0的用法-->
+			<!-- <li v-for="val in obj">
+				{{val}} {{$index}} {{$key}}
+			</li> -->
+			<li v-for="(key,val) in obj">
+				{{val}} {{$index}} {{$key}}
+			</li>
+		</ul>
+	</div>
+	<script src="vue-1.0.26.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				obj:{
+					name:'yejia',
+					age:20,
+					address:'Nanjing Rd.'
+				}
+			}
+		});
+	</script>
+</body>
+</html>
