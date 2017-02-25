@@ -14,7 +14,7 @@
 	<script>
 		
 		var vm = new Vue({
-			
+			a: 1,
 			data: {
 				price: 20,
 				count: 10
@@ -33,8 +33,17 @@
 			}			
 		});
 		vm.$mount('#app'); // 手动挂载绑定范围
+		vm.$watch('total', function(newVal, oldVal) {
+			alert(newVal + ' | ' + oldVal);
+		});
 		vm.total = 300;
-		console.log(vm);
+		// 获取当前元素
+		vm.$el.style.background = 'red';
+		// 获取当前实例上挂载的数据
+		console.log(vm.$data);
+		// $options, 获取自定义的属性
+		console.log(vm.$options.a);
+		// $watch 监控数据
 	</script>
 </body>
 </html>
