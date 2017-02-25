@@ -11,7 +11,8 @@
 <body>
 	<div id="app">
 		{{msg}}
-		<button @click="getUser"></button>
+		<button @click="getUser">获取数据</button>
+		<button @click="postUser">发送数据</button>
 	</div>
 	<script src="vue-2.1.10.js"></script>
 	<script src="vue-resource.js"></script>
@@ -28,6 +29,12 @@
 						console.log(res.body);
 						this.msg = res.body;
 					})
+				},
+				postUser() {
+					this.$http.post('/postUser', {name: 'xiaoye'}).then(function (res) {
+						 console.log(res);
+					})
+
 				}
 			}
 		});

@@ -12,6 +12,10 @@ app.get('/getUser', function(req, res) {
 		age: 20
 	}]);
 });
+app.post('/postUser', function(req, res) {
+	res.send(req.body);
+	console.log(req.body);
+});
 app.get('/', function(req, res) {
 	res.sendFile('./get.html', {root: __dirname});
 });
