@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+	双向数据绑定
+	</title>
+</head>
+<body>
+<!-- 双向数据绑定 必须满足视图可以更改，表单元素input -->
+	<div class="app">
+	<!-- 双向数据绑定 需要一个指令 所有的表单元素 都需要增加v-model属性-->
+		<input type="text" v-model="msg" />
+		{{msg}}
+	</div>
+	<script src="vue-2.1.10.js"></script>
+	<script>
+		new Vue({
+			el: '.app',
+			data: {
+				msg: 'Hello Vue'
+			}
+		});
+	</script>
+</body>
+</html>
