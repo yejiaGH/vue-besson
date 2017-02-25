@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算属性的获取</title>
+	<link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+	<div id="app">
+		{{total}}		
+	</div>
+	<script src="vue-2.1.10.js"></script>
+	<script>
+		
+		var vm = new Vue({
+			
+			data: {
+				price: 20,
+				count: 10
+			},
+			computed: {
+				total: function () {
+					return this.price * this.count;
+				}
+			}			
+		});
+		vm.$mount('#app'); // 手动挂载绑定范围
+		// vm.$destroy(); // 强制让实例销毁 但是编译好后的数据不会销毁
+		console.log(vm);
+	</script>
+</body>
+</html>
