@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<title>留言板</title>
 	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		[v-cloak]{
+			display:none;
+		}
+	</style>
 </head>
 <body>
 	<div id="app">
@@ -23,7 +28,8 @@
 							<button type="button" class="btn btn-primary" @click="leave">添加留言</button>
 						</div>
 					</form>
-					<ul class="list-group">
+					<!-- v-cloak 当数据加载后会将此指令移除掉 -->
+					<ul class="list-group" v-cloak>
 						<li class="list-group-item" v-for="message in messages">
 							<p>标题: {{message.title}}</p>
 							<p>内容: {{message.content}}</p>
