@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>生命周期1.0</title>
+	<link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+	<div id="app">
+		{{msg}}
+	</div>
+	<script src="vue-1.0.26.js"></script>
+	<script>
+		// 钩子函数 
+		var vm = new Vue({
+			// el: '#app', // 如果没有el元素 是无法编译的
+			data: {
+				msg: '生命周期'
+			},
+			init() {
+				alert('初始化');
+			},
+			created() {
+				alert('初始化完成');
+			},
+			beforeCompile() {
+				alert('编译前');
+			},
+			compiled() {
+				alert('编译后');
+			},
+			ready() { // 页面首次加载获取之前 在ready方法后获取数据
+				alert('准备好了');
+			},
+			beforeDestroy() {
+				alert('销毁前');
+			},
+			destroyed() {
+				alert('销毁后');
+			},
+			methods: {
+				
+			}
+		});
+		vm.$mount('#app'); // 手动挂载绑定范围
+		vm.$destroy(); // 强制让实例销毁 但是编译好后的数据不会销毁
+		console.log(vm);
+	</script>
+</body>
+</html>
