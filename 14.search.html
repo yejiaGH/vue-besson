@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度搜索框</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		search: <input type="text" v-model="query" @keyup="search" @keydown.down="down" @keydown.up.prevent="up" />
+		<ul class="list-group">
+			<li class="list-group-item" v-for="(data, key) in datas" :class="{active : index == key}">{{data}}</li>
+		</ul>
+	</div>
+	<script src="vue-2.1.10.js"></script>
+	<script src="vue-resource.js"></script>
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				query: '',
+				index: 1,
+				datas: []
+			},
+			
+			methods: {
+				search(e) {
+					var keyCode = e.keyCode;
+					if (keyCode == 38 || keyCode == 40) return;
+					if (keyCode == 13) {
+						return window.open('https://www.baidu.com/s?wd=' + this.query);
+					}
+					this.$http.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', {
+						params: {
+							wd: this.query
+						},
+						jsonp: 'cb'
+					}).then(function (res) {
+						this.datas = res.body.s;
+					});
+				},
+				down() {
+					if (this.index == this.datas.length-1) {
+						this.index = 0;
+					} else {
+						this.index++;
+					}
+					
+					this.query = this.datas[this.index];
+				},
+				up() {
+					if (this.index == 0) {
+						this.index = this.datas.length-1;
+					} else {
+						this.index--;
+					}
+					
+					this.query = this.datas[this.index];
+				}
+			}
+		});
+	</script>
+</body>
+</html>
