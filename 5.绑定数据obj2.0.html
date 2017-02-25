@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+	数据绑定
+	</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<!-- 2.0中没有声明过的不能直接用 -->
+			<li v-for="(val,key) in obj">
+				{{val}} {{key}}
+			</li>
+			<!-- 如果v-for不使用() 那就是val 使用小括号在1.0中是key,value 在2.0中是value,key -->
+		</ul>
+	</div>
+	<script src="vue-2.1.10.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				obj:{
+					name:'yejia',
+					age:20,
+					address:'Nanjing Rd.'
+				}
+			}
+		});
+	</script>
+</body>
+</html>
