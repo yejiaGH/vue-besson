@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+	<div class="container" id="app">
+		<div @click="fn">parent
+		<!-- 修饰符 阻止冒泡 -->
+			<div @click.stop="fn">child</div>
+		</div>
+		<!-- 修饰符 阻止默认行为 -->
+		<a @click.prevent="fn1" href="https://www.lu.com">go 陆金所</a>
+	</div>
+	<script src="vue-2.1.10.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				
+			},
+			methods: {
+				fn() {					
+					alert('hello');
+				},
+				fn1() {
+					alert('稍后再去');
+				}
+			}
+		});
+	</script>
+</body>
+</html>
