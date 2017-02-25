@@ -7,7 +7,8 @@
 </head>
 <body>
 	<div id="app">
-		{{total}}		
+		{{total}} <br>
+		{{count}}	
 	</div>
 	<script src="vue-2.1.10.js"></script>
 	<script>
@@ -19,13 +20,20 @@
 				count: 10
 			},
 			computed: {
-				total: function () {
-					return this.price * this.count;
+				// 获取值 =》 设置值 设置total可以影响count
+				total: {
+					get: function() {
+						return this.price * this.count;
+					},
+					set: function(total) {
+						// 设置total影响了count
+						this.count = total/this.price;
+					}
 				}
 			}			
 		});
 		vm.$mount('#app'); // 手动挂载绑定范围
-		// vm.$destroy(); // 强制让实例销毁 但是编译好后的数据不会销毁
+		vm.total = 300;
 		console.log(vm);
 	</script>
 </body>
