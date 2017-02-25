@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绑定动态数据</title>
+	<link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+	<div class="container" id="app">
+	<!-- 如果想绑定动态数据 需要使用bind v-bind 简写用: -->
+		<img v-bind:src="attr" :title="title" :width="w">
+	</div>
+	<script src="vue-2.1.10.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				attr: 'https://static.lufaxcdn.com/wcm-images/UcuCOdQ4bJE5qGwNvDRIBA.jpg',
+				title: '陆金所',
+				w: 120
+			},
+			methods: {
+				
+			}
+		});
+	</script>
+</body>
+</html>
