@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>
+	数据绑定
+	</title>
+</head>
+<body>
+	<div id="app">
+		{{arr}}
+		<!-- 要重复谁 就在谁的身上写v-for -->
+		<ul>
+			<!-- a变量代表的就是arr中的元素 -->
+			<!-- <li v-for="a in arr" track-by="$index">{{a}} {{$index}}</li> -->
+			<li v-for="(index, val) in arr" track-by="$index">
+				{{$index}} {{index}} {{val}}
+			</li>
+		</ul>
+		<!-- 遍历数组时 需要加 track-by="$index" -->
+	</div>
+	<script src="vue-1.0.26.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				arr: ['iphone6', 'iphone7','iphone6']
+			}
+		});
+	</script>
+</body>
+</html>
