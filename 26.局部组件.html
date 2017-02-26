@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>局部组件</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<hello></hello>
+ 	</div>
+	
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		
+		var vm = new Vue({
+			el: '#app',
+			components: {
+				hello: {
+					template: '<h1>hello</h1>',
+					data() {
+						return {name: 'hello component'}
+					}
+				}
+			},
+			data: {
+				
+			},	
+			computed: {
+				
+			},	
+			methods: {
+				
+			}
+		});
+		
+	</script>
+</body>
+</html>
