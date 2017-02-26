@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>非父子组件的交互</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<hello></hello>
+		<hello1></hello1>
+	</div>
+	<template id="hello">
+		<div>hello
+			<button @click="send">传递数据</button>
+		</div>
+	</template>
+	<template id="hello1">
+		<div>hello1 {{msg}}</div>
+		
+	</template>
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		// 事件
+		var Event = new Vue; // event.$on event.$emit
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				
+			},
+			components: {
+				hello: {
+					template: '#hello',
+					data(){
+						return {msg: 'I am hungry'}
+					},
+					methods: {
+						send() {
+							Event.$emit('hungry', this.msg);
+						}
+					}
+				},
+				hello1: {
+					template: '#hello1',
+					mounted() {
+						Event.$on('hungry', (data)=>{
+							this.msg = data;
+						});
+					},
+					data() {
+						return {msg: ''}
+					}
+				}
+			},
+				
+			computed: {
+				
+			},	
+			methods: {
+				
+			}
+		});
+		
+	</script>
+</body>
+</html>
