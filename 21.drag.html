@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>指令实现拖拽</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		.drag{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div v-drag class="drag">A</div>
+		<div v-drag class="drag">B</div>
+		<!-- 1.0中有元素型指令，2.0中不用了，用组件 -->
+	</div>
+	
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		// 指令用来操作DOM
+		Vue.directive('drag', function (el) {
+			el.onmousedown = function (e) {
+				var disX = e.pageX - el.offsetLeft;
+				var disY = e.pageY - el.offsetTop;
+				console.log(disX, disY);
+				document.onmousemove = function (e) {
+					el.style.left = e.pageX - disX + 'px';
+					el.style.top = e.pageY - disY + 'px';
+				};
+				document.onmouseup = function () {
+					document.onmousemove = document.onmouseup = null;
+				};
+				e.preventDefault();
+			}
+		});
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				
+			},			
+			methods: {
+				
+			}
+		});
+	</script>
+</body>
+</html>
