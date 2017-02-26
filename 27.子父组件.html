@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>子父组件</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<parent></parent>
+ 	</div>
+	<template id="tmpl">
+		<div><div>parent</div>{{age}}<child @s="p"></child></div>
+	</template>
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		// parent child
+		var vm = new Vue({
+			el: '#app',
+			components: {
+				parent: {
+					template: '#tmpl',
+					data(){
+						return {age:0}
+					},
+					methods: {
+						p (data) {
+							this.age = data;
+						}
+					},
+					components: {
+						child: {
+							template: '<div @click="sayAge">child</div>',
+							data() {
+								return {age: 20}
+							},
+							methods: {
+								sayAge() {
+									// 向上发射事件 emit
+									this.$emit('s', this.age)
+								}
+							}
+						}
+					}
+				}
+			},
+			data: {
+				
+			},	
+			computed: {
+				
+			},	
+			methods: {
+				
+			}
+		});
+		
+	</script>
+</body>
+</html>
