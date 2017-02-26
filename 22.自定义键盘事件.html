@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义键盘事件</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<input type="text" @keydown.f1="up">
+	</div>
+	
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		// 扩展键盘事件
+		// Vue.directive('on').keyCodes.f1 = 112; // 1.0用法
+		Vue.config.keyCodes.f1 = 112; // 2.0写法
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				
+			},			
+			methods: {
+				up: function () {
+					alert('ok');
+				}
+			}
+		});
+	</script>
+</body>
+</html>
