@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>子组件更改父组件数据但是不同步</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<parent></parent>
+	</div>
+	<template id="tmpl">
+		<!-- <div><div>parent</div>{{name}}<child :n.sync="name"></child></div> -->
+		<div><div>parent</div>{{name}}<child :n="name"></child></div>
+	</template>
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		// parent child
+		var vm = new Vue({
+			el: '#app',
+			components: {
+				parent: {
+					template: '#tmpl',
+					data() {
+						return {name: 'parentname'}
+					},
+					components: {
+						child: {
+							template: '<div @click="update">child {{a}}</div>',
+							// props: ['n']
+							props: {n: String},
+							data() {
+								return {a: ''} // 第三方变量
+							},
+							mounted: function () {
+								this.a = this.n
+							},
+							methods: {
+								update () {
+									this.a  = 'jw'
+								}
+							}
+						}
+					}
+				}
+			},
+			data: {
+				
+			},	
+			computed: {
+				
+			},	
+			methods: {
+				
+			}
+		});
+		
+	</script>
+</body>
+</html>
