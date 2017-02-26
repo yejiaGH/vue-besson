@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue组件</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<hello></hello>
+ 	</div>
+	<div id="app1">
+		<hello></hello>
+ 	</div>
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		// 组件将模板替换成标签，就近维护 全局组件 局部组件
+		// var et = Vue.extend({
+		// 	template: '<h1>component</h1>'
+		// });		
+		// Vue.component('hello', et); // 注册组件
+		// 语法糖形式注册组件
+		Vue.component('hello', {
+			template: '<h1>{{msg}}, component</h1>',
+			// 在组件中data是一个函数 返回的之是数据
+			data () {
+				return {
+					msg: 'hello'
+				}
+			},
+			methods: {
+
+			}
+		});
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				name: 'app'
+			},	
+			computed: {
+				
+			},	
+			methods: {
+				
+			}
+		});
+		var vm = new Vue({
+			el: '#app1',
+			data: {
+				
+			},	
+			computed: {
+				
+			},	
+			methods: {
+				
+			}
+		});
+	</script>
+</body>
+</html>
