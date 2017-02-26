@@ -28,6 +28,9 @@
 	</template>
 	<template id="list">
 		<h1>list</h1>
+		<a v-link="{path:'/list/news/1'}">消息1</a>
+		<a v-link="{path:'/list/news/2'}">消息2</a>
+		<router-view></router-view>
 	</template>
 	<template id="login">
 		<h1>login</h1>
@@ -59,6 +62,21 @@
 			'/list': {
 				component: {
 					template: '#list'
+				},
+				subRoutes: {
+					'/news/:id': {
+						component: {
+							template: '<div>消息{{$route.params.id}}{{$route.query | json}}{{$route.path}}</div>',
+							route: {
+								data(transition) {
+									// console.log(transition);
+									console.log(this.$route.params.id);
+									console.log(this.$route.path);
+									console.log(this.$route.query);
+								}
+							}
+						}
+					}
 				}
 			}
 		});
