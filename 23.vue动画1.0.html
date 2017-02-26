@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue动画1.0</title>
+	<link rel="stylesheet" href="bootstrap.css">
+	<style>
+		.fadeIn{
+			background: red;
+			width: 200px;
+			height: 200px;
+		}
+		.fly-transition {
+			-webkit-transition: 1s linear;
+		}
+		/* 要设置一个最初状态，还要设置结束状态 */
+		.fly-enter {
+			width: 0px;
+			opacity: 0;
+		}
+		.fly-leave {
+			width: 100px;
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<button @click="flag=!flag">显示/隐藏</button>
+		<div v-show="flag" class="fadeIn" transition="fly">
+			这是显示或隐藏
+		</div>
+	</div>
+	
+	<!-- <script src="vue-2.1.10.js"></script> -->
+	<script src="vue-1.0.26.js"></script>
+	<script src="vue-resource.js"></script>	
+	<script>
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				flag: true
+			},			
+			methods: {
+				
+			}
+		});
+	</script>
+</body>
+</html>
