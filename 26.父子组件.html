@@ -13,7 +13,7 @@
 		<parent></parent>
  	</div>
 	<template id="tmpl">
-		<div><div>parent</div><child></child></div>
+		<div><div>parent</div><child :n="name"></child></div>
 	</template>
 	<script src="vue-2.1.10.js"></script>
 	<!-- <script src="vue-1.0.26.js"></script> -->
@@ -25,9 +25,14 @@
 			components: {
 				parent: {
 					template: '#tmpl',
+					data() {
+						return {name: 'parentname'}
+					},
 					components: {
 						child: {
-							template: '<div>child</div>'
+							template: '<div>child {{n}}</div>',
+							// props: ['n']
+							props: {n: String}
 						}
 					}
 				}
