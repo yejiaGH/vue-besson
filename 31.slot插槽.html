@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot插槽</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<hello><div slot="brand">component</div><div slot="age">slot</div></hello>
+	</div>
+	<template id="hello">
+	<!-- 没有名字的slot -->
+		<!-- <div>hello<slot></slot></div> -->
+		<!-- 具名slot -->
+		<div>hello<slot name="age"></slot><slot name="brand"></slot></div>
+	</template>
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
+	<script src="vue-resource.js"></script>	
+	<script>
+		// parent child
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				
+			},
+			components: {
+				hello: {
+					template: '#hello'
+				}
+			},			
+			computed: {
+				
+			},	
+			methods: {
+				
+			}
+		});
+		
+	</script>
+</body>
+</html>
