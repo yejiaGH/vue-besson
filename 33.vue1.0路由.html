@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue1.0路由</title>
+	<link rel="stylesheet" href="animate.css">
+	<style>
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<a v-link="{path:'/home'}">首页</a>
+		<a v-link="{path:'/list'}">列表页</a>
+		<router-view></router-view>
+	</div>
+	
+	<!-- <script src="vue-2.1.10.js"></script> -->
+	<script src="vue-1.0.26.js"></script>
+	<script src="vue-router-0.7.13.js"></script>
+	<template id="home">
+		<h1>home</h1>
+	</template>
+	<template id="list">
+		<h1>list</h1>
+	</template>
+	<script>
+		var App = {};
+		var router = new VueRouter;
+		router.map({
+			'/home': {
+				component: {
+					template: '#home'
+				}
+			},
+			'/list': {
+				component: {
+					template: '#list'
+				}
+			}
+		});
+		router.start(App, '#app');
+	</script>
+</body>
+</html>
