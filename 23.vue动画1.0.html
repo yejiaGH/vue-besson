@@ -33,10 +33,14 @@
 			这是显示或隐藏
 		</div>
  		-->
- 		<transition name="fly">
+ 		<!-- <transition name="fly"> -->
+ 		<transition enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
  			<div v-show="flag" class="fadeIn">这是显示或隐藏</div>
  		</transition>
-		
+		<transition-group enter-active-class="animated fadeInUp" leave-active-class="animated fadeOutDown">
+ 			<div v-show="flag" class="fadeIn" :key="1">这是显示或隐藏1</div>
+ 			<div v-show="flag" class="fadeIn" :key="2">这是显示或隐藏2</div>
+ 		</transition-group>
  	</div>
 	
 	<script src="vue-2.1.10.js"></script>
