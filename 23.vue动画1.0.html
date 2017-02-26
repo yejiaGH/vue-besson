@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>vue动画1.0</title>
-	<link rel="stylesheet" href="bootstrap.css">
+	<link rel="stylesheet" href="animate.css">
 	<style>
 		.fadeIn{
 			background: red;
@@ -27,7 +27,7 @@
 <body>
 	<div id="app">
 		<button @click="flag=!flag">显示/隐藏</button>
-		<div v-show="flag" class="fadeIn" transition="fly">
+		<div v-show="flag" class="fadeIn animated" transition="fly">
 			这是显示或隐藏
 		</div>
 	</div>
@@ -40,7 +40,13 @@
 			el: '#app',
 			data: {
 				flag: true
-			},			
+			},
+			transitions: {
+				fly: {
+					enterClass: 'fadeInUp',
+					leaveClass: 'fadeOutDown'
+				}
+			},
 			methods: {
 				
 			}

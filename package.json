@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yejiaGH/vue-besson#readme",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "bootstrap": "^3.3.7",
     "mongoose": "^4.8.4"
   },
