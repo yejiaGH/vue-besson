@@ -5,7 +5,9 @@
 	<title>vue1.0路由</title>
 	<link rel="stylesheet" href="animate.css">
 	<style>
-		
+		.v-link-active {
+			background: red;
+		}
 	</style>
 </head>
 <body>
@@ -20,9 +22,18 @@
 	<script src="vue-router-0.7.13.js"></script>
 	<template id="home">
 		<h1>home</h1>
+		<a v-link="{path:'/home/login'}">登录</a>
+		<a v-link="{path:'/home/reg'}">注册</a>
+		<router-view></router-view>
 	</template>
 	<template id="list">
 		<h1>list</h1>
+	</template>
+	<template id="login">
+		<h1>login</h1>
+	</template>
+	<template id="reg">
+		<h1>reg</h1>
 	</template>
 	<script>
 		var App = {};
@@ -31,6 +42,18 @@
 			'/home': {
 				component: {
 					template: '#home'
+				},
+				subRoutes: {
+					'/login': {
+						component: {
+							template: '#login'
+						}
+					},
+					'/reg': {
+						component: {
+							template: '#reg'
+						}
+					}
 				}
 			},
 			'/list': {
@@ -40,6 +63,10 @@
 			}
 		});
 		router.start(App, '#app');
+		// 增加404跳转
+		router.redirect({
+			'/': 'home'
+		});
 	</script>
 </body>
 </html>
