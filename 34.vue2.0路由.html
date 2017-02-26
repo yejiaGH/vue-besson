@@ -32,7 +32,12 @@
 			</div>`
 		};
 		var List= {
-			template: '<h1>列表</h1>'
+			template: `<div>
+			<h1>列表</h1>
+			<router-link to="/list/news/1">消息1</router-link>
+			<router-link to="/list/news/2">消息2</router-link>
+			<router-view></router-view>
+			</div>`
 		};
 		var router = new VueRouter({
 			routes: [
@@ -56,7 +61,19 @@
 				},
 				{
 					path: '/list', 
-					component: List
+					component: List,
+					children: [
+						{
+							path: 'news/:nid',
+							component: {
+								template: '<div>消息是{{$route.params.nid}}</div>'
+							},
+							beforeEnter (to, from, next) {
+								console.log(to.params.nid);
+								next();
+							}
+						}
+					]
 				},
 				{
 					path: '*',
