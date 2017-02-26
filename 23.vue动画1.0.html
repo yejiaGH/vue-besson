@@ -5,35 +5,42 @@
 	<title>vue动画1.0</title>
 	<link rel="stylesheet" href="animate.css">
 	<style>
-		.fadeIn{
+		.fadeIn {
 			background: red;
 			width: 200px;
 			height: 200px;
 		}
-		.fly-transition {
+		/* fly-enter 初始状态设置 fly-enter-active 激活进入时的状态 */
+		.fly-enter {
+			width: 100px;
+			height: 100px;
+		}
+		.fly-enter-active {
 			-webkit-transition: 1s linear;
 		}
-		/* 要设置一个最初状态，还要设置结束状态 */
-		.fly-enter {
-			width: 0px;
-			opacity: 0;
-		}
-		.fly-leave {
+		/* fly-leave 初始离开状态设置 fly-leave-active 激活离开时的状态 */
+		.fly-leave-active {
 			width: 100px;
-			opacity: 0;
+			height: 100px;
+			-webkit-transition: 1s linear;
 		}
 	</style>
 </head>
 <body>
 	<div id="app">
 		<button @click="flag=!flag">显示/隐藏</button>
-		<div v-show="flag" class="fadeIn animated" transition="fly">
+		<!-- <div v-show="flag" class="fadeIn animated" transition="fly">
 			这是显示或隐藏
 		</div>
-	</div>
+ 		-->
+ 		<transition name="fly">
+ 			<div v-show="flag" class="fadeIn">这是显示或隐藏</div>
+ 		</transition>
+		
+ 	</div>
 	
-	<!-- <script src="vue-2.1.10.js"></script> -->
-	<script src="vue-1.0.26.js"></script>
+	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
 	<script src="vue-resource.js"></script>	
 	<script>
 		var vm = new Vue({
@@ -41,12 +48,12 @@
 			data: {
 				flag: true
 			},
-			transitions: {
-				fly: {
-					enterClass: 'fadeInUp',
-					leaveClass: 'fadeOutDown'
-				}
-			},
+			// transitions: {
+			// 	fly: {
+			// 		enterClass: 'fadeInUp',
+			// 		leaveClass: 'fadeOutDown'
+			// 	}
+			// },
 			methods: {
 				
 			}
