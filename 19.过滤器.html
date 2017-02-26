@@ -10,14 +10,25 @@
 </head>
 <body>
 	<div id="app">
-		{{msg | capitalize}}
-		{{100 | currency '$'}}
+		<!-- {{msg | capitalize}} -->
+		<!-- {{100 | currency '$'}} -->
+		<!-- {{Date.now() | date "aaa" "bbbb"}} --> <!-- 1.0传参写法-->
+		{{Date.now() | date("aaa","bbbb")}} <!-- 2.0传参写法-->
 	</div>
-	<!-- <script src="vue-1.0.26.js"></script> -->
-	<!-- 在2.0中所有的内置过滤器都没有了，推荐自己写过滤器 -->
+	
 	<script src="vue-2.1.10.js"></script>
+	<!-- <script src="vue-1.0.26.js"></script> -->
 	<script src="vue-resource.js"></script>
+	
+	<!-- 在2.0中所有的内置过滤器都没有了，推荐自己写过滤器 -->
+	
 	<script>
+	// param1 过滤的内容 param2 "aaa" param2 "bbbb"
+		Vue.filter('date', function(input, param1, param2) {
+			var d = new Date(input);
+			console.log(param1, param2);
+			return `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()} ${d.getHours()}时${d.getMinutes()}分${d.getSeconds()}秒`;
+		});
 		var vm = new Vue({
 			el: '#app',
 			data: {
